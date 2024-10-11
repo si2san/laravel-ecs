@@ -28,9 +28,3 @@ COPY --chown=www-data:www-data . /var/www
 
 # Set file permissions
 RUN chown -R www-data:www-data /var/www
-
-# Expose port for PHP-FPM
-EXPOSE 9000
-
-# Start PHP-FPM server
-CMD ["php-fpm"]

@@ -62,7 +62,7 @@
             },
             "mountPoints": [
                 {
-                    "sourceVolume": "shared-www-volume",
+                    "sourceVolume": "laravel-data",
                     "containerPath": "/var/www"
                 }
             ]
@@ -111,7 +111,7 @@
             },
             "mountPoints": [
                 {
-                    "sourceVolume": "shared-www-volume",
+                    "sourceVolume": "laravel-data",
                     "containerPath": "/var/www"
                 }
             ]
@@ -119,11 +119,7 @@
     ],
     "volumes": [
         {
-            "name": "shared-www-volume",
-            "dockerVolumeConfiguration": {
-                "autoprovision": true,
-                "scope": "task"
-            }
+            "name": "laravel-data"
         }
     ],
     "requiresCompatibilities": ["FARGATE"],

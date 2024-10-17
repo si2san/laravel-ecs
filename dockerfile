@@ -28,3 +28,5 @@ COPY --chown=www-data:www-data . /var/www
 
 # Set file permissions
 RUN chown -R www-data:www-data /var/www
+
+VOLUME /var/www

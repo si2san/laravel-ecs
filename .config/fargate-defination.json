@@ -1,5 +1,6 @@
 {
     "family": "laravel-app-backend-task",
+    "taskRoleArn": "arn:aws:iam::980921747919:role/ECSCustom",
     "executionRoleArn": "arn:aws:iam::980921747919:role/ecsTaskExecutionRole",
     "networkMode": "awsvpc",
     "containerDefinitions": [
@@ -40,6 +41,9 @@
             "essential": true,
             "memory": 256,
             "cpu": 128,
+            "linuxParameters": {
+                "initProcessEnabled": true
+            },
             "portMappings": [
                 {
                     "containerPort": 80,
@@ -63,7 +67,8 @@
             "mountPoints": [
                 {
                     "sourceVolume": "laravel-data",
-                    "containerPath": "/var/www"
+                    "containerPath": "/var/www",
+                    "readOnly": true
                 }
             ]
         },
@@ -73,6 +78,9 @@
             "essential": true,
             "memory": 1024,
             "cpu": 512,
+            "linuxParameters": {
+                "initProcessEnabled": true
+            },
             "environment": [
                 {
                     "name": "DB_HOST",
@@ -109,10 +117,12 @@
                     "awslogs-stream-prefix": "php"
                 }
             },
+            "workingDirectory": "/var/www",
             "mountPoints": [
                 {
                     "sourceVolume": "laravel-data",
-                    "containerPath": "/var/www"
+                    "containerPath": "/var/www",
+                    "readOnly": false
                 }
             ]
         }

@@ -26,6 +26,8 @@ COPY . /var/www
 # Copy existing application directory permissions
 COPY --chown=www-data:www-data . /var/www
 
+RUN composer install --no-dev --optimize-autoloader
+
 # Set file permissions
 RUN chown -R www-data:www-data /var/www
 
